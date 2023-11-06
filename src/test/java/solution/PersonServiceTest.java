@@ -14,6 +14,7 @@ import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @SpringBootTest
 public class PersonServiceTest {
@@ -51,9 +52,9 @@ public class PersonServiceTest {
     String username = "testuser";
     Person mockPerson = new Person();
     mockPerson.setUsername(username);
-    when(personRepository.findByUsername(username)).thenReturn(Optional.of(mockPerson));
+    when(personRepository.findByUsername(username)).thenReturn((UserDetails) mockPerson);
 
-    Person result = personService.getPersonByUsername(username);
+    UserDetails result = personService.loadUserByUsername(username);
 
     assertEquals(username, result.getUsername());
   }
@@ -61,9 +62,9 @@ public class PersonServiceTest {
   @Test
   public void testGetPersonByUsernamePersonNotFound() {
     String username = "testuser";
-    when(personRepository.findByUsername(username)).thenReturn(Optional.empty());
+    when(personRepository.findByUsername(username)).thenReturn(null);
 
-    assertThrows(PersonNotFoundException.class, () -> personService.getPersonByUsername(username));
+    assertThrows(PersonNotFoundException.class, () -> personService.loadUserByUsername(username));
   }
 
   @Test
