@@ -4,7 +4,7 @@ Agrix é um sistema que visa melhorar a eficiência no cultivo de plantações, 
 
 ## Funcionalidades
 
-O projeto Agrix será desenvolvido em fases, e atualmente (fase A) inclui as seguintes funcionalidades:
+O projeto Agrix será desenvolvido em fases, e atualmente (fase C) inclui as seguintes funcionalidades e rotas:
 
 1. **Cadastrar Fazendas**:
    - Rota POST `/farms` para cadastrar fazendas.
@@ -81,6 +81,8 @@ O projeto Agrix utiliza as seguintes tecnologias e frameworks:
 - **Spring Boot**: Para criar a aplicação e disponibilizar as APIs.
 
 - **Spring Data JPA**: Para a camada de persistência e acesso ao banco de dados.
+
+- **Spring Security**: Para implementar autenticação e autorização.
 
 - **Docker**: Para configurar a aplicação para execução em contêineres Docker.
 
